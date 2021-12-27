@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h2>Create Object from JSON String</h2>
+        <p id="demo"></p>
+
+        <!DOCTYPE html>
+        <html>
+            <body>
+                <h2>Use the XMLHttpRequest to get the content of a file.</h2>
+                <p id="demo"></p>
+                <script>
+                    var xmlhttp = new XMLHttpRequest(); 
+                    xmlhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            myObj = JSON.parse(this.responseText); 
+                            document.getElementById("demo").innerHTML = myObj.name;
+                        }
+                    };
+                    xmlhttp.open("GET", "test.txt", true);
+                    xmlhttp.send();
+                </script>
+                <p>Take a look at <a href="test.txt" target="_blank">test.txt</a></p>
+            </body>
+        </html>
+        
+        <script>
+            var obj = JSON.parse('{ "name":"John", "age":30, "city":"Seoul"}');
+            document.getElementById("demo").innerHTML = obj.name + ", " + obj.age + ", " + obj.city;
+        </script>
+    </body>
+</html>
