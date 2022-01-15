@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <script>
+      alert("{{ messages[-1] }}");
+    </script>
+    {% endif %} {% endwith %}
+
+    <style>
+        html, body {
+          background-color: #121212;
+          max-width: 500px;
+          margin: auto;
+          color: white;
+          height: 100%;
+          vertical-align: middle;
+        }
+        a {
+          color: white;
+          text-decoration:none;
+        }
+      </style>
+  </head>
+
+  <body>
+    <div class="main">
+        <img src="/static/dongguk.jpg" style="float: left; margin-right: 20px;
+        margin-bottom: 10px; width:40px; height:40px;" / >
+        <div class="message_board"> 
+            <h1><a href="{{url_for('lists')}}"> Message Board </a></h1>
+        </div>
+    </div>
+
+    <table>
+      <form name="form" method="POST" action="/write">
+        <thead>
+          <caption>
+            <h3>게시글 작성</h3>
+          </caption>
+        </thead>
+        <tbody>
+          <tr>
+            <td>아이디</td>
+            <td><input type="text" name="name" value="{{name}}" /></td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td><textarea name="contents"></textarea></td>
+          </tr>
+          <tr>
+            <td colspan="2"><input type="submit" value="업로드" /></td>
+          </tr>
+        </tbody>
+      </form>
+    </table>
+    <p>
+        <a href="{{url_for('lists')}}"> 작성 취소 </a>
+      </p>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <script>
+      alert("{{ messages[-1] }}");
+    </script>
+    {% endif %} {% endwith %}
+
+    <style>
+      html, body {
+        background-color: #121212;
+        max-width: 500px;
+        margin: auto;
+        color: white;
+        height: 100%;
+        vertical-align: middle;
+      }
+      a {
+        color: white;
+        text-decoration:none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+      <img src="/static/dongguk.jpg" style="float: left; margin-right: 20px;
+      margin-bottom: 10px; width:40px; height:40px;" / >
+      <div class="message_board">
+        <h1><a href="{{url_for('lists')}}"> Message Board </a></h1>
+      </div>
+    </div>
+
+    <div class="write">
+      <p>
+        <a style="float: right;" href="{{url_for('board_write')}}">게시글 작성</a> <br>
+      </p>
+    </div>
+
+    <table>
+      <tbody>
+        {% for data in datas|reverse %}
+        <tr>
+          <td>{{data.name}}</td>
+          <div class="time" style="float: right;">
+            <td>{{data.pubdate|formatdatetime}}</td>
+          </div>
+          
+        </tr>
+        <tr>
+          <td>
+            <a href="{{url_for('board_view', idx=data._id)}}"
+              >{{data.contents}}</a
+            >
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <br />
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

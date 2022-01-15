@@ -1,9 +1,0 @@
-{
-    "books": [
-    { "language":"Java" , "edition":"second" }, 
-    { "language":"C++" , "edition":"fifth" }, 
-    { "language":"C" , "edition":"third" },
-    { "title":"trotzdem Ja zum Leben sagen", "author":"Viktor Frankl"},
-    { "title": "The Art of Loving", "author":"Erich Fromm"}
-    ] 
-}
